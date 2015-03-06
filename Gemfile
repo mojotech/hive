@@ -52,6 +52,9 @@ group :development, :test do
 
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+
+  # Config vars
+  gem 'dotenv-rails'
 end
 
 group :test do
