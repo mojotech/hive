@@ -78,8 +78,7 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging: &staging
+  url: <%= ENV['DATABASE_URL'] %>
 production:
-  <<: *default
-  database: hive_production
-  username: hive
-  password: <%= ENV['HIVE_DATABASE_PASSWORD'] %>
+  <<: *staging
