@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
   def create
-    auth = request.env["omniauth.auth"]
+    auth = request.env['omniauth.auth']
 
-    user = User.find_by(github_user_id: auth["uid"]) || create_user(auth)
+    user = User.find_by(github_user_id: auth['uid']) || create_user(auth)
 
     session[:user_id] = user.id
 
@@ -17,9 +17,9 @@ class SessionsController < ApplicationController
   private
 
   def create_user(auth)
-    User.create(github_user_id: auth["uid"],
-                nickname: auth["info"]["nickname"],
-                email:  auth["info"]["email"],
-                auth_token: auth["credentials"]["token"])
+    User.create(github_user_id: auth['uid'],
+                nickname: auth['info']['nickname'],
+                email:  auth['info']['email'],
+                auth_token: auth['credentials']['token'])
   end
 end
