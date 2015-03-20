@@ -1,0 +1,39 @@
+$primary-green: #2d8f20;
+$primary-grey: #444;
+$primary-light: #fdfdfd;
+$light-grey: #eee;
+$highlight-grey: #ddd;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  background-color: $primary-light;
+  color: $primary-grey;
+}
+
+a {
+  color: $primary-green;
+}
+
+.sidebar {
+  background-color: $light-grey;
+  border-right: 1px solid $highlight-grey;
+  bottom: 0;
+  font-family: sans-serif;
+  left: 0;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  width: 200px;
+
+  .logged-in {
+    font-size: .9rem;
+  }
+}
