@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def create_user(auth)
     User.create(github_user_id: auth["uid"],
-                name: auth["info"]["nickname"],
+                nickname: auth["info"]["nickname"],
                 email:  auth["info"]["email"],
                 auth_token: auth["credentials"]["token"])
   end
