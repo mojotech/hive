@@ -7,6 +7,7 @@ h1 Hive
 
   ul
   - repository_names.each do |name|
-    li = name
+    li
+     = link_to name, repository_path(name)
 - else
   = link_to 'Sign in with Github', '/auth/github'
