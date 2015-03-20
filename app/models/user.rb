@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
     github_client.organizations
   end
 
+  def repositories
+    github_client.repositories
+  end
+
   private
 
   def github_client
