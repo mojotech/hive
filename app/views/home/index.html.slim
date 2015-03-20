@@ -1,0 +1,5 @@
+- if current_user
+  ul.groups
+    li = current_user.nickname
+    - organizations.each do |organization|
+      li = organization.login
