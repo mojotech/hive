@@ -41,6 +41,8 @@ gem 'omniauth-github'
 group :development do
   # Better error pages for debugging
   gem 'better_errors'
+
+  gem 'rubocop', require: false
 end
 
 group :development, :test do
