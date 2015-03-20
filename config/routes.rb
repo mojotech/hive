@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :sign_out
 
   resources :users, param: :nickname, only: 'show'
+  resources :organizations, param: :login, only: 'show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

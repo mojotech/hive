@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
     github_client.repositories
   end
 
+  def repositories_for_organization(org_login)
+    github_client.organization_repositories(org_login, type: :member)
+  end
+
   private
 
   def github_client
