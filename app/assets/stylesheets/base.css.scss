@@ -22,6 +22,10 @@ a {
   color: $primary-green;
 }
 
+ul {
+  list-style-position: inside;
+}
+
 .sidebar {
   background-color: $light-grey;
   border-right: 1px solid $highlight-grey;
