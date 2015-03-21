@@ -27,6 +27,20 @@ ul {
   list-style-position: inside;
 }
 
+ul.tree li {
+  list-style-type: none;
+
+  a {
+    border-top: 1px solid $highlight-grey;
+    display: block;
+    padding: 10px;
+  }
+
+  a:hover {
+    background-color: $light-grey;
+  }
+}
+
 .header-wrapper {
   border-bottom: 1px solid $highlight-grey;
   display: table;
