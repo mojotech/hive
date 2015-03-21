@@ -16,6 +16,7 @@ html {
 body {
   background-color: $primary-light;
   color: $primary-grey;
+  font-family: sans-serif;
 }
 
 a {
@@ -35,7 +36,6 @@ ul {
 .header {
   display: table-row;
   background-color: $light-grey;
-  font-family: sans-serif;
 
   h1 {
     display: table-cell;
