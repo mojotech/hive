@@ -16,6 +16,7 @@ html {
 body {
   background-color: $primary-light;
   color: $primary-grey;
+  font-family: sans-serif;
 }
 
 a {
@@ -26,23 +27,50 @@ ul {
   list-style-position: inside;
 }
 
-.sidebar {
-  background-color: $light-grey;
-  border-right: 1px solid $highlight-grey;
-  bottom: 0;
-  font-family: sans-serif;
-  left: 0;
-  padding: 20px;
-  position: absolute;
-  top: 0;
-  width: 200px;
+ul.tree li {
+  list-style-type: none;
 
-  .logged-in {
+  a {
+    border-top: 1px solid $highlight-grey;
+    display: block;
+    padding: 10px;
+  }
+
+  a:hover {
+    background-color: $light-grey;
+  }
+}
+
+.header-wrapper {
+  border-bottom: 1px solid $highlight-grey;
+  display: table;
+  width: 100%;
+}
+
+.header {
+  display: table-row;
+  background-color: $light-grey;
+
+  h1 {
+    display: table-cell;
+    line-height: 1;
+    padding: 5px 10px;
+  }
+
+  .log-in {
+    display: table-cell;
     font-size: .9rem;
+    padding: 5px 10px;
+    text-align: right;
+    vertical-align: middle;
   }
 }
 
 .content {
-  margin-left: 260px;
-  margin-top: 20px;
+  margin: 50px 250px;
+}
+
+h1 small {
+  font-size: 12px;
+  margin-left: 5px;
 }

@@ -1,5 +1,5 @@
 - if current_user
-  ul.groups
+  ul.tree.groups
     - user_nickname = current_user.nickname
     li = link_to user_nickname, user_path(user_nickname)
     - organizations.each do |organization|
