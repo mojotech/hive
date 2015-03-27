@@ -55,6 +55,15 @@ ul.tree li {
     display: table-cell;
     line-height: 1;
     padding: 5px 10px;
+
+    a {
+      color: $primary-grey;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: $primary-green;
+    }
   }
 
   .log-in {
