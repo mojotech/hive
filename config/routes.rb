@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, param: :nickname, only: 'show'
   resources :organizations, param: :login, only: 'show'
 
+  get '/:owner/:repo_name' => 'repositories#show', as: 'repository'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
