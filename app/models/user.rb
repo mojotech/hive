@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     github_client.organization_repositories(org_login, type: :member)
   end
 
+  def repository(owner, name)
+    github_client.repository("#{owner}/#{name}")
+  end
+
   private
 
   def github_client
