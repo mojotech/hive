@@ -8,5 +8,8 @@
     = text_field_tag :branch_name, nil, placeholder: 'Branch name'
     = submit_tag 'Create Use Case'
   end
+  ul.branches
+  - branches.each do |branch|
+    li = branch.name
 - else
   h1 Repository could not be found.

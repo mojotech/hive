@@ -1,6 +1,8 @@
 class RepositoriesController < ApplicationController
   def show
-    render locals: { repository: current_user.repository(params[:owner], params[:repo_name]) }
+    repository = current_user.repository(params[:owner], params[:repo_name])
+    branches = current_user.branches(repository.full_name)
+    render locals: { repository: repository, branches: branches }
   rescue Octokit::NotFound
     render locals: { repository: nil }
   end

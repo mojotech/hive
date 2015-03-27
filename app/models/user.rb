@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     github_client.create_ref(repository.full_name, "heads/#{name}", root_sha)
   end
 
+  def branches(repository_full_name)
+    github_client.branches(repository_full_name)
+  end
+
   private
 
   def github_client
