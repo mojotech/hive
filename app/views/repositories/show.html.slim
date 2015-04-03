@@ -1,4 +1,7 @@
-h1
-  = repository.name
-  small = link_to 'View on GitHub', repository.html_url
-.description = repository.description
+- if repository
+  h1
+    = repository.name
+    small = link_to 'View on GitHub', repository.html_url
+  .description = repository.description
+- else
+  h1 Repository could not be found.
