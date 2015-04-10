@@ -20,6 +20,13 @@ class User < ActiveRecord::Base
     github_client.repository("#{owner}/#{name}")
   end
 
+  def create_branch(owner, repo, name)
+    repository = repository(owner, repo)
+    default_branch_name = repository.default_branch
+    root_sha = github_client.ref(repository.full_name, "heads/#{default_branch_name}").object.sha
+    github_client.create_ref(repository.full_name, "heads/#{name}", root_sha)
+  end
+
   private
 
   def github_client

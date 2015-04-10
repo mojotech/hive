@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :organizations, param: :login, only: 'show'
 
   get '/:owner/:repo_name' => 'repositories#show', as: 'repository'
+  post '/:owner/:repo_name/create_branch' => 'repositories#create_branch', as: 'repository_create_branch'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
