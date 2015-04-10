@@ -1,6 +1,10 @@
 - if repository
   h1
     = repository.name
+    ul
+    - for feature in features
+      li
+        a= feature.name
     small = link_to 'View on GitHub', repository.html_url
   .description = repository.description
 

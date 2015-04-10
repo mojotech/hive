@@ -1,6 +1,9 @@
 class RepositoriesController < ApplicationController
   def show
-    render locals: { repository: current_user.repository(params[:owner], params[:repo_name]) }
+    render locals: {
+      repository: current_user.repository(params[:owner], params[:repo_name]),
+      features: current_user.features(params[:owner], params[:repo_name], '/features')
+    }
   rescue Octokit::NotFound
     render locals: { repository: nil }
   end

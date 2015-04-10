@@ -27,6 +27,11 @@ class User < ActiveRecord::Base
     github_client.create_ref(repository.full_name, "heads/#{name}", root_sha)
   end
 
+  def features(owner, repo_name, path)
+    path = '/features' unless path
+    github_client.contents("#{owner}/#{repo_name}", path: path)
+  end
+
   private
 
   def github_client
