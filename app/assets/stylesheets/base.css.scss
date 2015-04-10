@@ -51,10 +51,27 @@ ul.tree li {
   display: table-row;
   background-color: $light-grey;
 
-  h1 {
+  .logo {
     display: table-cell;
-    line-height: 1;
-    padding: 5px 10px;
+
+    h1 {
+      display: inline-block;
+      line-height: 1;
+      padding: 5px 10px;
+    }
+
+    .breadcrumbs {
+      display: inline-block;
+    }
+
+    a {
+      color: $primary-grey;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: $primary-green;
+    }
   }
 
   .log-in {

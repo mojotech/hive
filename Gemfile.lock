@@ -47,6 +47,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    breadcrumbs_on_rails (2.3.0)
     builder (3.2.2)
     byebug (2.7.0)
       columnize (~> 0.3)
@@ -244,6 +245,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  breadcrumbs_on_rails
   coffee-rails (~> 4.1.0)
   dotenv-rails
   factory_girl_rails

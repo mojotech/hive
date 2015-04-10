@@ -8,7 +8,10 @@ html
   body
     .header-wrapper
       .header
-        h1 Hive
+        .logo
+          h1 = link_to 'Hive', root_path
+          .breadcrumbs
+            = render_breadcrumbs separator: ' / '
         .log-in
           - if current_user
 
