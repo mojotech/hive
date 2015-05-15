@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     github_client.branches(repository_full_name)
   end
 
+  def branch(repository_full_name, branch_name)
+    github_client.branch(repository_full_name, branch_name)
+  end
+
   private
 
   def github_client

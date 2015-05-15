@@ -9,6 +9,6 @@
     = submit_tag 'Create Use Case'
   ul.branches
   - branches.each do |branch|
-    li = branch.name
+    li = link_to branch.name, branch_path(repository.owner.login, repository.name, branch.name)
 - else
   h1 Repository could not be found.
