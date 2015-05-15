@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
     github_client.branch(repository_full_name, branch_name)
   end
 
+  def get_feature_at_sha(repository_full_name, sha)
+    tree = github_client.tree(repository_full_name, sha)
+    features_root = tree.tree.detect { |object| object.path == 'features' }
+    subtree = github_client.tree(repository_full_name, features_root.sha)
+    blob_root = subtree.tree.first
+    Base64.decode64(github_client.blob(repository_full_name, blob_root.sha).content)
+  end
+
   private
 
   def github_client
