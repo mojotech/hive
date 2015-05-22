@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post '/:owner/:repo_name/create_branch' => 'repositories#create_branch', as: 'repository_create_branch'
 
   get '/:owner/:repo_name/:branch_name' => 'branches#show', as: 'branch'
+  patch '/:owner/:repo_name/:branch_name' => 'branches#update'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
