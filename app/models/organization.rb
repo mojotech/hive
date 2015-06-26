@@ -1,4 +1,6 @@
 class Organization
+  attr_reader :login
+
   def initialize(login:, auth_token:)
     @login = login
     @auth_token = auth_token

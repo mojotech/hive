@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   validates :auth_token, presence: true
 
   def organizations
-    github_client.organizations
+    github_client.organizations.map do |organization_hash|
+      Organization.new(login: organization_hash.login, auth_token: auth_token)
+    end
   end
 
   def repositories
