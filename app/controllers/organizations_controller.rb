@@ -4,6 +4,6 @@ class OrganizationsController < ApplicationController
 
     organization = Organization.new(login: params[:login], auth_token: current_user.auth_token)
 
-    render locals: { repositories: organization.repositories.sort_by { |repo| repo[:name].downcase } }
+    render locals: { repositories: organization.repositories.sort_by { |repo| repo.name.downcase } }
   end
 end

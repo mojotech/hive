@@ -5,7 +5,13 @@ class Organization
   end
 
   def repositories
-    github_client.organization_repositories(@login, type: :member)
+    github_client.organization_repositories(@login, type: :member).map do |repo_hash|
+      Repository.new(
+        name: repo_hash.name,
+        owner_login: repo_hash.owner.login,
+        auth_token: @auth_token
+      )
+    end
   end
 
   private

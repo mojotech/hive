@@ -9,7 +9,13 @@ class User < ActiveRecord::Base
   end
 
   def repositories
-    github_client.repositories
+    github_client.repositories.map do |repo_hash|
+      Repository.new(
+        name: repo_hash.name,
+        owner_login: repo_hash.owner.login,
+        auth_token: auth_token
+      )
+    end
   end
 
   private
