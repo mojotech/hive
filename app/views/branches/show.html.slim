@@ -2,4 +2,8 @@ h1
   = branch.name
   small = link_to 'View on GitHub', branch._links.html
 .file-content
-  = file_content
+  = form_tag branch_path, method: 'patch'
+    .description
+      = text_area_tag :description, file_content
+    .submit_button
+      = submit_tag

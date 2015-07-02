@@ -29,6 +29,15 @@ class User < ActiveRecord::Base
     github_client.create_ref(repository.full_name, "heads/#{name}", new_commit.sha)
   end
 
+  def edit_branch(repository_full_name, branch_name, description)
+    branch = github_client.branch(repository_full_name, branch_name)
+    root_sha = branch.commit.sha
+    filename = filename_for_new_branch(branch_name)
+
+    new_commit = edit_file_commit(repository_full_name, root_sha, filename, description)
+    github_client.update_ref(repository_full_name, "heads/#{branch_name}", new_commit.sha)
+  end
+
   def branches(repository_full_name)
     github_client.branches(repository_full_name)
   end
@@ -79,6 +88,11 @@ class User < ActiveRecord::Base
       file_tree_entry(filename, blob_sha),
       base_tree: base_tree_sha
     )
+  end
+
+  def edit_file_commit(repo, root_sha, filename, content = '')
+    new_tree = create_file_tree(repo, root_sha, filename, content)
+    create_commit(repo, "Edited #{filename}", new_tree.sha, root_sha)
   end
 
   def create_new_file_commit(repo, root_sha, filename, content = '')
