@@ -4,9 +4,7 @@
     small = link_to 'View on GitHub', repository.html_url
   .description = repository.description
 
-  = form_tag repository_create_branch_path(repository.owner.login, repository.name) do
-    = text_field_tag :branch_name, nil, placeholder: 'Branch name'
-    = submit_tag 'Create Use Case'
+  = link_to 'Create New Use Case', repository_new_branch_path(repository.owner.login, repository.name)
   ul.branches
   - branches.each do |branch|
     li = link_to branch.name, branch_path(repository.owner.login, repository.name, branch.name)

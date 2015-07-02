@@ -20,12 +20,12 @@ class User < ActiveRecord::Base
     github_client.repository("#{owner}/#{name}")
   end
 
-  def create_branch(owner, repo, name)
+  def create_branch(owner:, repo:, name:, description:)
     repository = repository(owner, repo)
     default_branch_name = repository.default_branch
     root_sha = github_client.ref(repository.full_name, "heads/#{default_branch_name}").object.sha
     filename = filename_for_new_branch(name)
-    new_commit = create_new_file_commit(repository.full_name, root_sha, filename)
+    new_commit = create_new_file_commit(repository.full_name, root_sha, filename, description + "\n")
     github_client.create_ref(repository.full_name, "heads/#{name}", new_commit.sha)
   end
 
