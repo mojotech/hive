@@ -4,9 +4,9 @@
     small = link_to 'View on GitHub', repository.html_url
   .description = repository.description
 
-  = link_to 'Create New Use Case', repository_new_branch_path(repository.owner.login, repository.name)
+  = link_to 'Create New Use Case', repository_new_branch_path(repository.owner_login, repository.name)
   ul.branches
   - branches.each do |branch|
-    li = link_to branch.name, branch_path(repository.owner.login, repository.name, branch.name)
+    li = link_to branch.name, branch_path(repository.owner_login, repository.name, branch.name)
 - else
   h1 Repository could not be found.

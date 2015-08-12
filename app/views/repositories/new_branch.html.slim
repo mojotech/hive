@@ -1,4 +1,4 @@
-= form_tag repository_create_branch_path(repository.owner.login, repository.name) do
+= form_tag repository_create_branch_path(repository.owner_login, repository.name) do
   .name
     = text_field_tag :branch_name, nil, placeholder: 'Branch name'
   .description
