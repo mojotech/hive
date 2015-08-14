@@ -1,6 +1,8 @@
 class Repository
   attr_reader :name, :owner_login
 
+  class ReferenceAlreadyExistsError < StandardError; end
+
   def initialize(name:, owner_login:, auth_token:)
     @name = name
     @owner_login = owner_login
@@ -33,6 +35,12 @@ class Repository
     filename = filename_for_new_branch(branch_name)
     new_commit = create_new_file_commit(root_sha, filename, description)
     github_client.create_ref(full_name, "heads/#{branch_name}", new_commit.sha)
+  rescue Octokit::UnprocessableEntity => e
+    if e.message.include?("Reference already exists")
+      raise ReferenceAlreadyExistsError
+    else
+      raise
+    end
   end
 
   def edit_branch(branch_name, description)
