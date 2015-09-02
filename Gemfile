@@ -67,6 +67,9 @@ group :development, :test do
 
   # Config vars
   gem 'dotenv-rails'
+
+  gem 'bootstrap-sass', '~> 3.3.5'
+  gem 'bootstrap_form'
 end
 
 group :test do
