@@ -11,18 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320171648) do
+ActiveRecord::Schema.define(version: 20150902171923) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'github_user_id', null: false
-    t.string 'nickname',       null: false
-    t.string 'email',          null: false
-    t.string 'auth_token',     null: false
-    t.datetime 'created_at',     null: false
-    t.datetime 'updated_at',     null: false
+  create_table "acceptance_criteria", force: :cascade do |t|
+    t.integer "ticket_id"
+    t.string  "description"
+  end
+
+  add_index "acceptance_criteria", ["ticket_id"], name: "index_acceptance_criteria_on_ticket_id", using: :btree
+
+  create_table "apps", force: :cascade do |t|
+    t.string "name"
+    t.string "repository_name"
+  end
+
+  create_table "apps_users", force: :cascade do |t|
+    t.integer "app_id"
+    t.integer "user_id"
+  end
+
+  add_index "apps_users", ["app_id"], name: "index_apps_users_on_app_id", using: :btree
+  add_index "apps_users", ["user_id"], name: "index_apps_users_on_user_id", using: :btree
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer "app_id"
+    t.string  "type"
+    t.text    "description"
+  end
+
+  add_index "tickets", ["app_id"], name: "index_tickets_on_app_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "github_user_id", null: false
+    t.string   "nickname",       null: false
+    t.string   "email",          null: false
+    t.string   "auth_token",     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
