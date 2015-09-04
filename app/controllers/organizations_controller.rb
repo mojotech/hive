@@ -1,4 +1,6 @@
 class OrganizationsController < ApplicationController
+  before_action :ensure_user
+
   def show
     add_breadcrumb params[:login]
 
