@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_and_belongs_to_many :apps
+
   validates :github_user_id, presence: true
   validates :nickname, presence: true
   validates :email, presence: true
