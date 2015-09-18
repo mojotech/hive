@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :ensure_user
+
   def show
     add_breadcrumb current_user.nickname
 

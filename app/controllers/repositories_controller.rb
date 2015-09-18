@@ -1,4 +1,6 @@
 class RepositoriesController < ApplicationController
+  before_action :ensure_user
+
   def show
     add_breadcrumb params[:owner]
     add_breadcrumb params[:repo_name]
