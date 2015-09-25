@@ -16,26 +16,18 @@ ActiveRecord::Schema.define(version: 20150902171923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "apps_users", force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "user_id"
-  end
-
-  add_index "apps_users", ["project_id"], name: "index_apps_users_on_project_id", using: :btree
-  add_index "apps_users", ["user_id"], name: "index_apps_users_on_user_id", using: :btree
-
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "repository_name"
   end
 
-  create_table "tickets", force: :cascade do |t|
+  create_table "projects_users", force: :cascade do |t|
     t.integer "project_id"
-    t.string  "type"
-    t.text    "description"
+    t.integer "user_id"
   end
 
-  add_index "tickets", ["project_id"], name: "index_tickets_on_project_id", using: :btree
+  add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
+  add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "github_user_id", null: false
