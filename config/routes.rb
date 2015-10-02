@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   resources :users, param: :nickname, only: 'show'
   resources :organizations, param: :login, only: 'show'
 
-  resources :apps
+  resources :apps do
+    resources :tickets, only: [:create]
+  end
+
   get '/:owner/:repo_name' => 'repositories#show', as: 'repository'
   post '/:owner/:repo_name/create_branch' => 'repositories#create_branch', as: 'repository_create_branch'
   get '/:owner/:repo_name/new_branch' => 'repositories#new_branch', as: 'repository_new_branch'
