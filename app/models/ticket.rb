@@ -6,4 +6,5 @@ class Ticket < ActiveRecord::Base
 
   validates :requester, presence: true
   validates :app, presence: true
+  validates :title, presence: true
 end
