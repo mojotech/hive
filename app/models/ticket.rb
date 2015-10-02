@@ -7,4 +7,8 @@ class Ticket < ActiveRecord::Base
   validates :requester, presence: true
   validates :app, presence: true
   validates :title, presence: true
+
+  def branch_name
+    "#{owner.try(:nickname) || 'ticket'}/#{id}/#{title.parameterize}"
+  end
 end
