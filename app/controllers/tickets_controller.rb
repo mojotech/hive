@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.permit(:title, :description)
+    params.require(:ticket).permit(:title, :description)
   end
 
   def current_app
