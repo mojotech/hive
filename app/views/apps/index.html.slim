@@ -9,15 +9,17 @@ ul
         .panel-heading
           .panel-title Tickets
         .panel-body
-          = form_tag app_tickets_path(app)
-            = label_tag :description, "Description"
-            = text_area_tag :description, nil, class: 'form-control'
-            = submit_tag "Create", class: "btn btn-default"
+          = form_for [app, Ticket.new] do |f|
+            = f.label :title
+            = f.text_field :title, class: 'form-control'
+            = f.label :description
+            = f.text_area :description, class: 'form-control'
+            = f.submit "Create", class: "btn btn-default"
           .tickets
             - app.tickets.each do |t|
               .panel.panel-default
                 .panel-heading.clearfix
-                  .pull-left.panel-title = t.id
+                  .pull-left.panel-title = t.title
                   .pull-right Requester: #{t.requester.nickname}
                 .panel-body
                   = t.description
