@@ -10,6 +10,8 @@ ul
           .panel-title Tickets
         .panel-body
           = form_tag app_tickets_path(app)
+            = label_tag :title, "Title"
+            = text_field_tag :title, nil, class: 'form-control'
             = label_tag :description, "Description"
             = text_area_tag :description, nil, class: 'form-control'
             = submit_tag "Create", class: "btn btn-default"
@@ -17,7 +19,7 @@ ul
             - app.tickets.each do |t|
               .panel.panel-default
                 .panel-heading.clearfix
-                  .pull-left.panel-title = t.id
+                  .pull-left.panel-title = t.title
                   .pull-right Requester: #{t.requester.nickname}
                 .panel-body
                   = t.description
