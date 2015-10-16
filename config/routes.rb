@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :apps do
     resources :tickets, only: [:create]
+    resources :lanes, only: [:create]
   end
 
   get '/:owner/:repo_name' => 'repositories#show', as: 'repository'
