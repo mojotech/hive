@@ -6,3 +6,6 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
     - 'db/schema.rb'
+
+Style/CollectionMethods:
+  Enabled: false
