@@ -17,7 +17,7 @@ describe Ticket do
     end
 
     it 'includes the id' do
-      expect(ticket.branch_name).to match /.*\/#{ticket.id}\/.*/
+      expect(ticket.branch_name).to match(%r{.*/#{ticket.id}/.*})
     end
 
     context 'ticket has an owner' do
@@ -25,7 +25,7 @@ describe Ticket do
       let(:ticket) { create :ticket, owner: owner }
 
       it 'includes the owner nickname' do
-        expect(ticket.branch_name).to match /#{owner.nickname}\/.*/
+        expect(ticket.branch_name).to match(/#{owner.nickname}\/.*/)
       end
     end
   end
