@@ -1,31 +1,38 @@
-.panel.panel-default
-  .panel-heading
-    .panel-title Tickets
-  .panel-body
-    = form_for [@app, Ticket.new] do |f|
-      = f.label :title
-      = f.text_field :title, class: 'form-control'
-      = f.label :description
-      = f.text_area :description, class: 'form-control'
-      = f.label :lane
-      = f.select :lane_id, @app.lanes.map {|l| [l.title, l.id]}, {}, { class: 'form-control' }
-      = f.submit "Create", class: "btn btn-default"
-    .tickets
-      - @app.tickets.each do |t|
-        .panel.panel-default
-          .panel-heading.clearfix
-            .pull-left.panel-title #{t.title} (#{t.lane.title})
-            .pull-right Requester: #{t.requester.nickname}
-          .panel-body
-            = t.description
-.panel.panel-default
-  .panel-heading
-    .panel-title Lanes
-  .panel-body
-    = form_for [@app, Lane.new] do |f|
-      = f.label :title
-      = f.text_field :title, class: 'form-control'
-      = f.submit "Create", class: "btn btn-default"
-    .ul.list-group
-      - @app.lanes.each do |l|
-        li.list-group-item = l.title
+ul.lanes
+  li.lane
+    .lane-heading Settings
+    .lane-body
+      .panel.panel-default
+        .panel-heading
+          .panel-title Tickets
+        .panel-body
+          = form_for [@app, Ticket.new] do |f|
+            = f.label :title
+            = f.text_field :title, class: 'form-control'
+            = f.label :description
+            = f.text_area :description, class: 'form-control'
+            = f.label :lane
+            = f.select :lane_id, @app.lanes.map {|l| [l.title, l.id]}, {}, { class: 'form-control' }
+            = f.submit "Create", class: "btn btn-default"
+      .panel.panel-default
+        .panel-heading
+          .panel-title Lanes
+        .panel-body
+          = form_for [@app, Lane.new] do |f|
+            = f.label :title
+            = f.text_field :title, class: 'form-control'
+            = f.submit "Create", class: "btn btn-default"
+          ul.list-group
+            - @app.lanes.each do |l|
+              li.list-group-item = l.title
+  - @app.lanes.each do |l|
+    li.lane
+      .lane-heading = l.title
+      .lane-body
+        - l.tickets.each do |t|
+          .panel.panel-default
+            .panel-heading
+              .panel-title = t.title
+            .panel-body
+              = t.description
+

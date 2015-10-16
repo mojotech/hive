@@ -8,3 +8,52 @@
 .logo {
   padding-right: 1rem;
 }
+
+ul.lanes {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  list-style-type:none;
+  white-space:nowrap;
+  overflow-x:auto;
+
+  .panel {
+    border-radius: 0;
+  }
+
+  .panel-heading {
+    border-radius: 0;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .panel-title {
+    font-size: inherit;
+  }
+}
+
+li.lane {
+  border-right: 1px solid #999;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+  width: 400px;
+}
+
+.lane-heading {
+  background-color: #333;
+  color: white;
+  padding: 0 15px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.lane-body {
+  padding: 15px;
+}
