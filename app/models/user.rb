@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :apps
-  has_many :requested_tickets, foreign_key: "requester_id", class_name: "Ticket"
-  has_many :owned_tickets, foreign_key: 'owner_id', class_name: "Ticket"
+  has_many :requested_tickets, foreign_key: 'requester_id', class_name: 'Ticket'
+  has_many :owned_tickets, foreign_key: 'owner_id', class_name: 'Ticket'
 
   validates :github_user_id, presence: true
   validates :nickname, presence: true
