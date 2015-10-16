@@ -1,5 +1,7 @@
 class AppsController < ApplicationController
   before_action :ensure_user
+  before_action :add_breadcrumbs, only: [:show, :edit]
+
   def index
     @apps = current_user.apps
   end
@@ -33,6 +35,10 @@ class AppsController < ApplicationController
     current_app.destroy
 
     redirect_to action: :index
+  end
+
+  private def add_breadcrumbs
+    add_breadcrumb current_app.name, app_path(current_app)
   end
 
   private def app_params

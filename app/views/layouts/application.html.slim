@@ -6,18 +6,13 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
-    .navbar.navbar-default.header-wrapper
-      .container-fluid
-        .navbar-header
-          h1 = link_to 'Hive', root_path
-          .breadcrumbs
-            = render_breadcrumbs separator: ' / '
-        ul.nav.navbar-nav.log-in.navbar-right
-          li
-            - if current_user
-              = link_to "Sign out", sign_out_path
-            - else
-              = link_to 'Sign in with Github', '/auth/github'
-
+    .bar.clearfix
+      span.logo = link_to 'Hive', root_path
+      = render_breadcrumbs separator: ' / '
+      .pull-right
+        - if current_user
+          = link_to "Sign out", sign_out_path
+        - else
+          = link_to 'Sign in with Github', '/auth/github'
     .container-fluid
       = yield
