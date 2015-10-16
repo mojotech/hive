@@ -3,23 +3,5 @@
 ul
   - @apps.each do |app|
     li
-      h4= link_to app.name, edit_app_url(app)
+      h4= link_to app.name, app_path(app)
       p Repo: #{app.repository_name}
-      .panel.panel-default
-        .panel-heading
-          .panel-title Tickets
-        .panel-body
-          = form_for [app, Ticket.new] do |f|
-            = f.label :title
-            = f.text_field :title, class: 'form-control'
-            = f.label :description
-            = f.text_area :description, class: 'form-control'
-            = f.submit "Create", class: "btn btn-default"
-          .tickets
-            - app.tickets.each do |t|
-              .panel.panel-default
-                .panel-heading.clearfix
-                  .pull-left.panel-title = t.title
-                  .pull-right Requester: #{t.requester.nickname}
-                .panel-body
-                  = t.description
