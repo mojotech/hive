@@ -1,11 +1,11 @@
 class Ticket < ActiveRecord::Base
-  belongs_to :app
+  belongs_to :lane
   has_many :acceptance_criteria
   belongs_to :requester, class_name: 'User'
   belongs_to :owner, class_name: 'User'
 
   validates :requester, presence: true
-  validates :app, presence: true
+  validates :lane, presence: true
   validates :title, presence: true
 
   def branch_name

@@ -5,7 +5,7 @@ describe Ticket do
     expect(build :ticket).to be_valid
   end
 
-  it { expect(subject).to validate_presence_of(:app) }
+  it { expect(subject).to validate_presence_of(:lane) }
   it { expect(subject).to validate_presence_of(:requester) }
   it { expect(subject).to validate_presence_of(:title) }
 

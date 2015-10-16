@@ -1,9 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :ticket do
-    lane
-    requester
-    title 'Ticket Title'
+  factory :lane do
+    app
+    title 'Lane Title'
   end
 end
