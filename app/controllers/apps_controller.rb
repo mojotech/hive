@@ -14,9 +14,8 @@ class AppsController < ApplicationController
   end
 
   def create
-    if current_user.apps.create(app_params)
-      redirect_to action: :index
-    end
+    return unless current_user.apps.create(app_params)
+    redirect_to action: :index
   end
 
   def edit
@@ -26,9 +25,8 @@ class AppsController < ApplicationController
 
   def update
     @app = current_app
-    if @app.update(app_params)
-      redirect_to action: :index
-    end
+    return unless @app.update(app_params)
+    redirect_to action: :index
   end
 
   def destroy

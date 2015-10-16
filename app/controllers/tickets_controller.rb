@@ -2,9 +2,8 @@ class TicketsController < ApplicationController
   before_action :ensure_user
 
   def create
-    if current_user.requested_tickets.create(ticket_params.merge(app: current_app))
-      redirect_to :back
-    end
+    return unless current_user.requested_tickets.create(ticket_params.merge(app: current_app))
+    redirect_to :back
   end
 
   private
