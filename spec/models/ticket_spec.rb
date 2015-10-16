@@ -17,7 +17,7 @@ describe Ticket do
     end
 
     it 'includes the id' do
-      expect(ticket.branch_name).to match(/.*\/#{ticket.id}\/.*/)
+      expect(ticket.branch_name).to match(%r{.*/#{ticket.id}/.*})
     end
 
     context 'ticket has an owner' do
