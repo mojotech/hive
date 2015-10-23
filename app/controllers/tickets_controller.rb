@@ -10,6 +10,30 @@ class TicketsController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    if current_ticket.destroy
+      redirect_to :back, flash: { success: 'Ticket deleted.' }
+    else
+      redirect_to :back, flash: { error: 'Ticket could not be deleted.' }
+    end
+  end
+
+  def claim
+    if current_ticket.update_attribute(:owner, current_user)
+      redirect_to :back, flash: { success: 'Ticket claimed.' }
+    else
+      redirect_to :back, flash: { error: 'Ticket could not be claimed.' }
+    end
+  end
+
+  def remove_owner
+    if current_ticket.update_attribute(:owner, nil)
+      redirect_to :back, flash: { success: 'Ticket owner removed.' }
+    else
+      redirect_to :back, flash: { error: 'Ticket owner could not be removed.' }
+    end
+  end
+
   private
 
   def ticket_params

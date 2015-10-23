@@ -22,6 +22,10 @@ ul.lanes {
   white-space:nowrap;
   overflow-x:auto;
 
+  .lane {
+    white-space: normal;
+  }
+
   .panel {
     border-radius: 0;
   }
