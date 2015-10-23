@@ -47,6 +47,7 @@ ul.lanes
                 dd = t.updated_at.strftime('%b %e at %l:%M%P %Z')
                 dt Created
                 dd = t.created_at.strftime('%b %e at %l:%M%P %Z')
-              = t.description
+                dt Description
+                dd = t.description
               = link_to "Delete", app_ticket_path(@app, t), method: :Delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this ticket?'}
 
