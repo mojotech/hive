@@ -10,6 +10,14 @@ class TicketsController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    if current_ticket.destroy
+      redirect_to :back, flash: { success: 'Ticket deleted.' }
+    else
+      redirect_to :back, flash: { error: 'Ticket could not be deleted.' }
+    end
+  end
+
   def claim
     if current_ticket.update_attribute(:owner, current_user)
       redirect_to :back, flash: { success: 'Ticket claimed.' }
