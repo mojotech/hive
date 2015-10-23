@@ -43,5 +43,9 @@ ul.lanes
                   dd = link_to "Claim", claim_app_ticket_path(@app, t), method: :post, class: 'btn btn-xs btn-primary'
                 dt Requester
                 dd = t.requester.nickname
+                dt Last updated
+                dd = t.updated_at.strftime('%b %e at %l:%M%P %Z')
+                dt Created
+                dd = t.created_at.strftime('%b %e at %l:%M%P %Z')
               = t.description
 
