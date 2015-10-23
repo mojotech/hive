@@ -28,7 +28,6 @@ class Repository
   end
 
   def create_branch(branch_name, description)
-    default_branch_name = octokit_repository.default_branch
     root_sha = github_client.ref(full_name, "heads/#{default_branch_name}").object.sha
     filename = filename_for_new_branch(branch_name)
     new_commit = create_new_file_commit(root_sha, filename, description)
@@ -60,6 +59,10 @@ class Repository
 
   def octokit_repository
     @octokit_repository ||= github_client.repository(full_name)
+  end
+
+  def default_branch_name
+    octokit_repository.default_branch
   end
 
   def filename_for_new_branch(branch_name)
