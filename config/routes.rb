@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :organizations, param: :login, only: 'show'
 
   resources :apps do
-    resources :tickets, only: [:create]
+    resources :tickets, only: [:create, :show]
     resources :lanes, only: [:create]
   end
 
