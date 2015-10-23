@@ -35,6 +35,12 @@ ul.lanes
               .panel-title = t.title
             .panel-body
               dl
+                dt Owner
+                - if t.owner.present?
+                  dd = t.owner.nickname
+                  dd = link_to "Remove", remove_owner_app_ticket_path(@app, t), method: :post, class: 'btn btn-xs btn-danger'
+                - else
+                  dd = link_to "Claim", claim_app_ticket_path(@app, t), method: :post, class: 'btn btn-xs btn-primary'
                 dt Requester
                 dd = t.requester.nickname
               = t.description
