@@ -41,10 +41,10 @@ class TicketsController < ApplicationController
   end
 
   def current_ticket
-    current_app.tickets.find(params[:id])
+    @current_ticket ||= current_app.tickets.find(params[:id])
   end
 
   def current_app
-    current_user.apps.find(params[:app_id])
+    @current_app ||= current_user.apps.find(params[:app_id])
   end
 end
