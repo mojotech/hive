@@ -1,3 +1,12 @@
+style
+  = Diffy::CSS
+
 h1 = current_ticket.id
 span = current_ticket.title
 p = current_ticket.description
+
+.diff
+  - diff.each do |file|
+    .file.well
+      .name = file[:filename]
+      = file[:patch].to_s(:html).html_safe

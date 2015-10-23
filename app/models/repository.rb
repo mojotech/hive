@@ -51,7 +51,15 @@ class Repository
     Base64.decode64(github_client.blob(full_name, blob_root.sha).content)
   end
 
+  def get_diff(branch_name)
+    compare(default_branch_name, branch_name)
+  end
+
   private
+
+  def compare(first_commit_name, second_commit_name)
+    @github_client.compare(full_name, first_commit_name, second_commit_name)
+  end
 
   def github_client
     @github_client ||= Octokit::Client.new(access_token: @auth_token, auto_paginate: true)
