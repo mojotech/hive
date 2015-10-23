@@ -31,8 +31,9 @@ ul.lanes
       .lane-body
         - l.tickets.each do |t|
           .panel.panel-default
-            .panel-heading
-              .panel-title = t.title
+            .panel-heading.clearfix
+              .panel-title.pull-left = t.title
+              .pull-right ##{t.id}
             .panel-body
               dl
                 dt Owner
