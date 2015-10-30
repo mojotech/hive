@@ -2,11 +2,9 @@ class TicketsController < ApplicationController
   before_action :ensure_user
 
   def show
-    # Apps should record the owner of the repo in some fashion as well.
-    # For now use the user nickname.
     repository = Repository.new(
       name: current_app.repository_name,
-      owner_login: current_user.nickname,
+      owner_login: current_app.repository_owner,
       auth_token: current_user.auth_token
     )
     ticket_branch = repository.branches.detect do |branch|
