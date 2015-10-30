@@ -42,7 +42,7 @@ class AppsController < ApplicationController
   end
 
   private def app_params
-    params.require(:app).permit(:name, :repository_name)
+    params.require(:app).permit(:name, :repository_full_name)
   end
 
   private def current_app

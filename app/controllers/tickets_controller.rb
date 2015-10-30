@@ -2,22 +2,15 @@ class TicketsController < ApplicationController
   before_action :ensure_user
 
   def show
-    # Apps should record the owner of the repo in some fashion as well.
-    # For now use the user nickname.
     repository = Repository.new(
       name: current_app.repository_name,
-      owner_login: current_user.nickname,
+      owner_login: current_app.repository_owner,
       auth_token: current_user.auth_token
     )
     ticket_branch = repository.branches.detect do |branch|
       branch.name.include?("/#{current_ticket.id}/")
     end
-    diff = repository.get_diff(ticket_branch[:name])
-    patches = diff.files.map do |file|
-      diffy = Diffy::Diff.new('', '', include_plus_and_minus_in_html: true, include_diff_info: true)
-      diffy.instance_variable_set(:@diff, file.patch)
-      { filename: file.filename, patch: diffy }
-    end
+    patches = patches(repository, ticket_branch)
     render locals: { current_ticket: current_ticket, diff: patches }
   end
 
@@ -62,5 +55,15 @@ class TicketsController < ApplicationController
 
   def current_app
     @current_app ||= current_user.apps.find(params[:app_id])
+  end
+
+  def patches(repository, branch)
+    return [] unless branch.present?
+    diff = repository.get_diff(branch[:name])
+    diff.files.map do |file|
+      diffy = Diffy::Diff.new('', '', include_plus_and_minus_in_html: true, include_diff_info: true)
+      diffy.instance_variable_set(:@diff, file.patch)
+      { filename: file.filename, patch: diffy }
+    end
   end
 end
