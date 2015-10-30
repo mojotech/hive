@@ -12,6 +12,11 @@
         dd = link_to "Claim", claim_app_ticket_path(@app, ticket), method: :post, class: 'btn btn-xs btn-primary'
       dt Requester
       dd = ticket.requester.nickname
+      dt Move
+      dd
+        = form_for ticket, url: update_lane_app_ticket_path(@app, ticket), method: :post do |f|
+          = f.select :lane_id, @app.lanes.map { |l| [l.title, l.id] }
+          = f.submit 'Move Ticket', class: 'btn btn-xs btn-primary'
       dt Last updated
       dd = ticket.updated_at.strftime('%b %e at %l:%M%P %Z')
       dt Created
