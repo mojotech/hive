@@ -28,7 +28,6 @@ class Repository
   end
 
   def create_branch(branch_name, description)
-    default_branch_name = octokit_repository.default_branch
     root_sha = github_client.ref(full_name, "heads/#{default_branch_name}").object.sha
     filename = filename_for_new_branch(branch_name)
     new_commit = create_new_file_commit(root_sha, filename, description)
@@ -52,7 +51,15 @@ class Repository
     Base64.decode64(github_client.blob(full_name, blob_root.sha).content)
   end
 
+  def get_diff(branch_name)
+    compare(default_branch_name, branch_name)
+  end
+
   private
+
+  def compare(first_commit_name, second_commit_name)
+    @github_client.compare(full_name, first_commit_name, second_commit_name)
+  end
 
   def github_client
     @github_client ||= Octokit::Client.new(access_token: @auth_token, auto_paginate: true)
@@ -60,6 +67,10 @@ class Repository
 
   def octokit_repository
     @octokit_repository ||= github_client.repository(full_name)
+  end
+
+  def default_branch_name
+    octokit_repository.default_branch
   end
 
   def filename_for_new_branch(branch_name)

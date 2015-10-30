@@ -35,6 +35,8 @@ gem 'octokit', '~> 3.0'
 # Breadcrumbs
 gem 'breadcrumbs_on_rails'
 
+gem 'diffy'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -71,6 +71,7 @@ GEM
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    diffy (3.0.7)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -258,6 +259,7 @@ DEPENDENCIES
   bootstrap_form
   breadcrumbs_on_rails
   coffee-rails (~> 4.1.0)
+  diffy
   dotenv-rails
   factory_girl_rails
   jbuilder (~> 2.0)
