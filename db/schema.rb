@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20151030184705) do
   enable_extension "plpgsql"
 
   create_table "acceptance_criteria", force: :cascade do |t|
+    t.string "description"
     t.integer "ticket_id"
-    t.string  "description"
   end
 
   add_index "acceptance_criteria", ["ticket_id"], name: "index_acceptance_criteria_on_ticket_id", using: :btree
@@ -39,19 +39,20 @@ ActiveRecord::Schema.define(version: 20151030184705) do
 
   create_table "lanes", force: :cascade do |t|
     t.integer "app_id"
-    t.string  "title"
+    t.string "title"
   end
 
   add_index "lanes", ["app_id"], name: "index_lanes_on_app_id", using: :btree
 
   create_table "tickets", force: :cascade do |t|
-    t.string   "type"
-    t.text     "description"
-    t.integer  "requester_id"
-    t.integer  "owner_id"
-    t.string   "title"
-    t.integer  "lane_id"
     t.datetime "created_at"
+    t.text "description"
+    t.integer "lane_id"
+    t.integer "owner_id"
+    t.integer "points"
+    t.integer "requester_id"
+    t.string "title"
+    t.string "type"
     t.datetime "updated_at"
   end
 
@@ -59,12 +60,12 @@ ActiveRecord::Schema.define(version: 20151030184705) do
   add_index "tickets", ["owner_id"], name: "index_tickets_on_owner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "github_user_id", null: false
-    t.string   "nickname",       null: false
-    t.string   "email",          null: false
-    t.string   "auth_token",     null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string "auth_token", null: false
+    t.datetime "created_at", null: false
+    t.string "email", null: false
+    t.string "github_user_id", null: false
+    t.string "nickname", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
