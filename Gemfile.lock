@@ -86,6 +86,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    fix-db-schema-conflicts (1.0.0)
+      rubocop (~> 0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hashie (3.4.0)
@@ -262,6 +264,7 @@ DEPENDENCIES
   diffy
   dotenv-rails
   factory_girl_rails
+  fix-db-schema-conflicts
   jbuilder (~> 2.0)
   jquery-rails
   octokit (~> 3.0)

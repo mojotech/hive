@@ -37,6 +37,9 @@ gem 'breadcrumbs_on_rails'
 
 gem 'diffy'
 
+# Sort elements in schema file to prevent conflicts
+gem 'fix-db-schema-conflicts'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
