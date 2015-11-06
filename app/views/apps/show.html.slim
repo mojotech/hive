@@ -25,6 +25,11 @@ ul.lanes
           ul.list-group
             - @app.lanes.each do |l|
               li.list-group-item = l.title
+    li.lane
+      .lane-heading Requested by me
+      .lane-body
+        - @app.tickets.where(requester: current_user).each do |t|
+          = render partial: 'tickets/lane_details', locals: { ticket: t }
   - @app.lanes.each do |l|
     li.lane
       .lane-heading = l.title
