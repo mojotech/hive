@@ -1,0 +1,22 @@
+.panel.panel-default
+  .panel-heading.clearfix
+    .panel-title.pull-left = ticket.title
+    .pull-right ##{ticket.id}
+  .panel-body
+    dl
+      dt Owner
+      - if ticket.owner.present?
+        dd = ticket.owner.nickname
+        dd = link_to "Remove", remove_owner_app_ticket_path(@app, ticket), method: :post, class: 'btn btn-xs btn-danger'
+      - else
+        dd = link_to "Claim", claim_app_ticket_path(@app, ticket), method: :post, class: 'btn btn-xs btn-primary'
+      dt Requester
+      dd = ticket.requester.nickname
+      dt Last updated
+      dd = ticket.updated_at.strftime('%b %e at %l:%M%P %Z')
+      dt Created
+      dd = ticket.created_at.strftime('%b %e at %l:%M%P %Z')
+      dt Description
+      dd = ticket.description
+    = link_to "View Details", app_ticket_path(@app, ticket), class: 'btn btn-xs btn-primary'
+    = link_to "Delete", app_ticket_path(@app, ticket), method: :Delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this ticket?'}
