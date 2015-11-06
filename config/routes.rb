@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     resources :lanes, only: [:create]
   end
 
+  resources :tickets, only: [] do
+    resources :acceptance_criteria, only: [:create]
+  end
+
   get '/:owner/:repo_name' => 'repositories#show', as: 'repository'
   post '/:owner/:repo_name/create_branch' => 'repositories#create_branch', as: 'repository_create_branch'
   get '/:owner/:repo_name/new_branch' => 'repositories#new_branch', as: 'repository_new_branch'
