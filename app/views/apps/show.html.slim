@@ -30,6 +30,11 @@ ul.lanes
       .lane-body
         - @app.tickets.where(requester: current_user).each do |t|
           = render partial: 'tickets/lane_details', locals: { ticket: t }
+    li.lane
+      .lane-heading Assigned to me
+      .lane-body
+        - @app.tickets.where(owner: current_user).each do |t|
+          = render partial: 'tickets/lane_details', locals: { ticket: t }
   - @app.lanes.each do |l|
     li.lane
       .lane-heading = l.title
