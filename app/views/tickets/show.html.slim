@@ -5,8 +5,23 @@ h1 = current_ticket.id
 span = current_ticket.title
 p = current_ticket.description
 
-.diff
-  - diff.each do |file|
-    .file.well
-      .name = file[:filename]
-      = file[:patch].to_s(:html).html_safe
+.row
+  .acceptance-criteria.col-xs-6
+    h2 Acceptance Criteria
+    ul
+    - current_ticket.acceptance_criteria.each do |acceptance_criterion|
+      li.acceptance_criterion
+        = acceptance_criterion.description
+    .acceptance_criterion
+      h4 New Acceptance Criterion
+      = form_for [current_ticket, AcceptanceCriterion.new] do |f|
+        = f.label :description
+        = f.text_field :description, class: 'form-control'
+        = f.submit "Create", class: "btn btn-default"
+
+  .ticket-diff.col-xs-6
+    h2 Code Comparison
+    - diff.each do |file|
+      .file.well
+        .name = file[:filename]
+        = file[:patch].to_s(:html).html_safe
