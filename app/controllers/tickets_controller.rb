@@ -60,7 +60,10 @@ class TicketsController < ApplicationController
   def patches(repository, branch)
     return [] unless branch.present?
     diff = repository.get_diff(branch[:name])
-    diff.files.map do |file|
+    files = diff.files.select do |file|
+      /.*(.feature|_spec.rb)$/ =~ file.filename
+    end
+    files.map do |file|
       diffy = Diffy::Diff.new('', '', include_plus_and_minus_in_html: true, include_diff_info: true)
       diffy.instance_variable_set(:@diff, file.patch)
       { filename: file.filename, patch: diffy }
