@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       member do
         post :claim
         post :remove_owner
+        post :update_lane
       end
     end
     resources :lanes, only: [:create]

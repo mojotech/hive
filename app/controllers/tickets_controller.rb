@@ -43,6 +43,11 @@ class TicketsController < ApplicationController
     end
   end
 
+  def update_lane
+    current_ticket.update(lane_id: params[:ticket][:lane_id])
+    redirect_to :back, flash: { success: 'Ticket moved.' }
+  end
+
   private
 
   def ticket_params
