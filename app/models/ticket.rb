@@ -1,6 +1,7 @@
 class Ticket < ActiveRecord::Base
   belongs_to :lane
   has_many :acceptance_criteria
+  has_many :comments
   belongs_to :requester, class_name: 'User'
   belongs_to :owner, class_name: 'User'
 
