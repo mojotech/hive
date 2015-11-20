@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :tickets, only: [] do
     resources :acceptance_criteria, only: [:create]
+    resources :comments, only: [:create]
   end
 
   get '/:owner/:repo_name' => 'repositories#show', as: 'repository'

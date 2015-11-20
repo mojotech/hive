@@ -6,7 +6,7 @@ span = current_ticket.title
 p = current_ticket.description
 
 .row
-  .acceptance-criteria.col-xs-6
+  .acceptance-criteria.col-xs-4
     h2 Acceptance Criteria
     ul
     - current_ticket.acceptance_criteria.each do |acceptance_criterion|
@@ -18,8 +18,17 @@ p = current_ticket.description
         = f.label :description
         = f.text_area :description, class: 'form-control'
         = f.submit "Create", class: "btn btn-default"
-
-  .ticket-diff.col-xs-6
+  .comments.col-xs-4
+    h2 Comments
+    ul
+    - current_ticket.comments.each do |comment|
+      li.comment
+        = comment.text
+    h4 New Comment
+    = form_for [current_ticket, Comment.new] do |f|
+      = f.text_area :text, class: 'form-control'
+      = f.submit "Create", class: "btn btn-default"
+  .ticket-diff.col-xs-4
     h2 Code Comparison
     - diff.each do |file|
       .file.well
