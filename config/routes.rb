@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         post :claim
         post :remove_owner
         post :update_lane
+        post :update_points
       end
     end
     resources :lanes, only: [:create]

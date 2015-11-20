@@ -10,6 +10,11 @@
         dd = link_to "Remove", remove_owner_app_ticket_path(@app, ticket), method: :post, class: 'btn btn-xs btn-danger'
       - else
         dd = link_to "Claim", claim_app_ticket_path(@app, ticket), method: :post, class: 'btn btn-xs btn-primary'
+      dt Points
+      dd
+        = form_for ticket, url: update_points_app_ticket_path(@app, ticket), method: :post do |f|
+          = f.select :points, (0..8)
+          = f.submit 'Update Points', class: 'btn btn-xs btn-primary'
       dt Requester
       dd = ticket.requester.nickname
       dt Move

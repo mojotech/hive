@@ -48,10 +48,15 @@ class TicketsController < ApplicationController
     redirect_to :back, flash: { success: 'Ticket moved.' }
   end
 
+  def update_points
+    current_ticket.update(points: params[:ticket][:points])
+    redirect_to :back, flash: { success: 'Point value changed.' }
+  end
+
   private
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description, :lane_id)
+    params.require(:ticket).permit(:title, :description, :lane_id, :points)
   end
 
   def current_ticket
