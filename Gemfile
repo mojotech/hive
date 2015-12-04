@@ -77,4 +77,8 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
+
+  # Cucumber
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
