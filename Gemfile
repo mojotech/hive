@@ -84,4 +84,7 @@ group :test do
 
   # Dill
   gem 'dill', github: 'mojotech/dill'
+
+  # Launchy
+  gem 'launchy'
 end
