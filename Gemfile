@@ -81,4 +81,7 @@ group :test do
   # Cucumber
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+
+  # Dill
+  gem 'dill', github: 'mojotech/dill'
 end
