@@ -87,4 +87,7 @@ group :test do
 
   # Launchy
   gem 'launchy'
+
+  # Webmock
+  gem 'webmock'
 end
