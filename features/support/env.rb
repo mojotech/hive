@@ -70,3 +70,5 @@ OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
     token: '1'
   }
 )
+
+World(Rails.application.routes.url_helpers)
