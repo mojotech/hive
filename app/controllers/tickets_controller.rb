@@ -12,6 +12,8 @@ class TicketsController < ApplicationController
     end
     patches = patches(repository, ticket_branch)
     render locals: { current_ticket: current_ticket, diff: patches }
+  rescue Octokit::NotFound
+    render locals: { current_ticket: current_ticket, diff: [] }
   end
 
   def create
