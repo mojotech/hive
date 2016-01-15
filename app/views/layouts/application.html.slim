@@ -11,8 +11,8 @@ html
       = render_breadcrumbs separator: ' / '
       .pull-right
         - if current_user
-          = link_to "Sign out", sign_out_path
+          = link_to "Sign out", sign_out_path, class: 'sign_out_link'
         - else
-          = link_to 'Sign in with Github', '/auth/github'
+          = link_to 'Sign in with Github', '/auth/github', class: 'sign_in_link'
     .container-fluid
       = yield

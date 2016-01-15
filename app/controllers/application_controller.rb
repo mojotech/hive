@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_user
-    redirect_to '/auth/github' unless current_user.present?
+    redirect_to root_url unless current_user.present?
   end
 
   def current_user
