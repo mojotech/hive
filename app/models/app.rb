@@ -3,6 +3,9 @@ class App < ActiveRecord::Base
   has_many :lanes
   has_many :tickets, through: :lanes
 
+  validates :repository_name, presence: true
+  validates :repository_owner, presence: true
+
   def repository_full_name
     "#{repository_owner}/#{repository_name}"
   end
