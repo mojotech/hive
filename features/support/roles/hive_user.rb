@@ -24,5 +24,18 @@ module Roles
     def create_new_app(name)
       submit :new_project_form, name: name
     end
+
+    # Ticket
+    form :edit_ticket_form, '.edit_ticket' do
+      text_field :description, 'ticket[description]'
+    end
+
+    def update_ticket(description)
+      submit :edit_ticket_form, description: description
+    end
+
+    def see_ticket_description?(description)
+      widget(:edit_ticket_form).widget(:description).text == description
+    end
   end
 end

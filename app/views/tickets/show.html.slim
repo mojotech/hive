@@ -3,7 +3,10 @@ style
 
 h1 = current_ticket.id
 span = current_ticket.title
-p = current_ticket.description
+= form_for [current_app, current_ticket] do |f|
+  = f.label :description
+  = f.text_area :description, class: 'form-control'
+  = f.submit "Update", class: "btn btn-default"
 
 .row
   .acceptance-criteria.col-xs-6

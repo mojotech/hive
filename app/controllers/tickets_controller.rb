@@ -11,13 +11,18 @@ class TicketsController < ApplicationController
       branch.name.include?("/#{current_ticket.id}/")
     end
     patches = patches(repository, ticket_branch)
-    render locals: { current_ticket: current_ticket, diff: patches }
+    render locals: { current_app: current_app, current_ticket: current_ticket, diff: patches }
   rescue Octokit::NotFound
-    render locals: { current_ticket: current_ticket, diff: [] }
+    render locals: { current_app: current_app, current_ticket: current_ticket, diff: [] }
   end
 
   def create
     return unless current_user.requested_tickets.create(ticket_params)
+    redirect_to :back
+  end
+
+  def update
+    current_ticket.update(ticket_params)
     redirect_to :back
   end
 
