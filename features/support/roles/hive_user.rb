@@ -50,5 +50,24 @@ module Roles
     def see_ticket_point_value?(id, points)
       widget(:edit_ticket_points_form, id).widget(:points).value == points.to_s
     end
+
+    # Acceptance Criteria
+    form :new_acceptance_criterion, '#new_acceptance_criterion' do
+      text_field :description, 'acceptance_criterion[description]'
+    end
+
+    list :acceptance_criteria, '.acceptance-criteria' do
+      item 'li.acceptance_criterion'
+    end
+
+    def create_acceptance_criterion(description)
+      submit :new_acceptance_criterion, description: description
+    end
+
+    def see_acceptance_criterion_description?(criterion_description)
+      value(:acceptance_criteria).any? do |criterion|
+        criterion == criterion_description
+      end
+    end
   end
 end
