@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :app do
+    repository_name 'repo_name'
+    repository_owner 'repo_owner'
   end
 end

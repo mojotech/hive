@@ -70,3 +70,5 @@ OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
     token: '1'
   }
 )
+
+World(FactoryGirl::Syntax::Methods)

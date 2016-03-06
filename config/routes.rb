@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :organizations, param: :login, only: 'show'
 
   resources :apps do
-    resources :tickets, only: [:create, :show, :destroy] do
+    resources :tickets, only: [:create, :show, :destroy, :update] do
       member do
         post :claim
         post :remove_owner
