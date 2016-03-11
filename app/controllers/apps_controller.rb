@@ -37,12 +37,17 @@ class AppsController < ApplicationController
     redirect_to action: :index
   end
 
+  def overview
+    @app = current_app
+  end
+
   private def add_breadcrumbs
     add_breadcrumb current_app.name, app_path(current_app)
+    add_breadcrumb 'Overview', overview_app_path(current_app)
   end
 
   private def app_params
-    params.require(:app).permit(:name, :repository_full_name)
+    params.require(:app).permit(:name, :repository_full_name, :overview)
   end
 
   private def current_app

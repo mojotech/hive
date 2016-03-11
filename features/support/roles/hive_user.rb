@@ -25,6 +25,20 @@ module Roles
       submit :new_project_form, name: name
     end
 
+    form :edit_app_form, '.edit_app' do
+      text_field :overview, 'app[overview]'
+    end
+
+    widget :overview, '.overview'
+
+    def set_app_overview(overview)
+      submit :edit_app_form, overview: overview
+    end
+
+    def see_app_overview?(overview)
+      widget(:overview).text == overview
+    end
+
     # Ticket
     form :edit_ticket_form, '.edit_ticket' do
       text_field :description, 'ticket[description]'

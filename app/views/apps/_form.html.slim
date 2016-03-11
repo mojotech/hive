@@ -1,4 +1,5 @@
 = bootstrap_form_for @app do |f|
   = f.text_field :name
+  = f.text_area :overview
   = f.select :repository_full_name, @repositories.map {|r| [r.full_name, r.full_name]}
   = f.submit
