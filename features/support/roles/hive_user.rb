@@ -37,5 +37,18 @@ module Roles
     def see_ticket_description?(description)
       widget(:edit_ticket_form).widget(:description).text == description
     end
+
+    # Lane Tickets
+    form :edit_ticket_points_form, -> (ticket_id) { [".ticket-#{ticket_id} .points-form"] } do
+      select :points, 'ticket[points]'
+    end
+
+    def set_point_value(id, points)
+      widget(:edit_ticket_points_form, id).submit_with(points: points)
+    end
+
+    def see_ticket_point_value?(id, points)
+      widget(:edit_ticket_points_form, id).widget(:points).value == points.to_s
+    end
   end
 end

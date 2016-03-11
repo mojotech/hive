@@ -1,4 +1,4 @@
-.panel.panel-default
+.panel.panel-default.ticket[class="ticket-#{ticket.id}"]
   .panel-heading.clearfix
     .panel-title.pull-left = ticket.title
     .pull-right ##{ticket.id}
@@ -12,7 +12,7 @@
         dd = link_to "Claim", claim_app_ticket_path(@app, ticket), method: :post, class: 'btn btn-xs btn-primary'
       dt Points
       dd
-        = form_for ticket, url: update_points_app_ticket_path(@app, ticket), method: :post do |f|
+        = form_for ticket, url: update_points_app_ticket_path(@app, ticket), method: :post, html: { class: 'points-form' } do |f|
           = f.select :points, (0..8)
           = f.submit 'Update Points', class: 'btn btn-xs btn-primary'
       dt Requester
