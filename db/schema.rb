@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318184204) do
+ActiveRecord::Schema.define(version: 20160318185356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 20160318184204) do
   end
 
   add_index "epics", ["app_id"], name: "index_epics_on_app_id", using: :btree
+
+  create_table "epics_tickets", force: :cascade do |t|
+    t.integer "epic_id"
+    t.integer "ticket_id"
+  end
+
+  add_index "epics_tickets", ["epic_id"], name: "index_epics_tickets_on_epic_id", using: :btree
+  add_index "epics_tickets", ["ticket_id"], name: "index_epics_tickets_on_ticket_id", using: :btree
 
   create_table "lanes", force: :cascade do |t|
     t.integer "app_id"
