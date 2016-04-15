@@ -13,4 +13,8 @@ class App < ActiveRecord::Base
   def repository_full_name=(full_name)
     self.repository_owner, self.repository_name = full_name.split('/')
   end
+
+  def documentation_directory
+    'docs'
+  end
 end
