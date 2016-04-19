@@ -1,37 +1,22 @@
 class SessionsController < ApplicationController
 
   def create
-    session[:user_id] = user.id
+    user_session.create
+    flash[:notice] = "Signed in!"
 
-    redirect_to root_url, notice: 'Signed in!'
+    redirect_to root_url
   end
 
   def destroy
-    session[:user_id] = nil
+    user_session.destroy
+    flash[:notice] = "Signed out!"
 
-    redirect_to root_url, notice: 'Signed out!'
+    redirect_to root_url
   end
 
   private
 
-  def user
-    find_user || create_user
-  end
-
-  def find_user
-    User.find_by(github_user_id: auth.user_id)
-  end
-
-  def create_user
-    User.create(
-      github_user_id: auth.user_id,
-      nickname:       auth.nickname,
-      email:          auth.email,
-      auth_token:     auth.token
-    )
-  end
-
-  def auth
-    @auth ||= GithubAuth.new(request.env['omniauth.auth'])
+  def user_session
+    @user_session ||= Session.new(request)
   end
 end
