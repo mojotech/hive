@@ -19,19 +19,19 @@ class SessionsController < ApplicationController
   end
 
   def find_user
-    User.find_by(github_user_id: auth_data['uid'])
+    User.find_by(github_user_id: auth.user_id)
   end
 
   def create_user
     User.create(
-      github_user_id: auth_data['uid'],
-      nickname:       auth_data['info']['nickname'],
-      email:          auth_data['info']['email'],
-      auth_token:     auth_data['credentials']['token']
+      github_user_id: auth.user_id,
+      nickname:       auth.nickname,
+      email:          auth.email,
+      auth_token:     auth.token
     )
   end
 
-  def auth_data
-    request.env['omniauth.auth']
+  def auth
+    @auth ||= GithubAuth.new(request.env['omniauth.auth'])
   end
 end
