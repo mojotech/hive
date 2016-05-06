@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :organizations, param: :login, only: 'show'
 
   resources :apps do
+    member do
+      get :lanes
+    end
     resources :tickets, only: [:create, :show, :destroy, :update] do
       member do
         post :claim

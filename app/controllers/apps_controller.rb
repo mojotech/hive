@@ -1,9 +1,13 @@
 class AppsController < ApplicationController
   before_action :ensure_user
-  before_action :add_breadcrumbs, only: [:show, :edit]
+  before_action :add_breadcrumbs, only: [:show, :edit, :lanes]
 
   def index
     @apps = current_user.apps
+  end
+
+  def lanes
+    @app = current_app
   end
 
   def show
