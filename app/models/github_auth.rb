@@ -1,5 +1,4 @@
 class GithubAuth
-
   attr_reader :data
 
   def initialize(data)

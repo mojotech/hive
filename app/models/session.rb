@@ -1,5 +1,4 @@
 class Session
-
   def initialize(request)
     @request = request
   end

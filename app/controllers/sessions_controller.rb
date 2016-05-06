@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def create
     user_session.create
     flash[:notice] = 'Signed in!'
