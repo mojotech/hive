@@ -22,7 +22,8 @@ class RepositoriesController < ApplicationController
       name: params[:repo_name],
       auth_token: current_user.auth_token
     )
-    repository.create_branch(params[:branch_name], params[:description])
+    filename = repository.filename_for_new_branch(params[:branch_name])
+    repository.create_branch(params[:branch_name], filename, params[:description])
     redirect_to action: 'show'
   end
 

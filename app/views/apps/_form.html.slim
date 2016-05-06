@@ -1,4 +1,7 @@
 = bootstrap_form_for @app do |f|
   = f.text_field :name
   = f.select :repository_full_name, @repositories.map {|r| [r.full_name, r.full_name]}
+  .form-group
+    = label_tag :description, nil, class: 'control-label'
+    = text_area_tag :description, nil, class: 'form-control'
   = f.submit

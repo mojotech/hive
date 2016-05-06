@@ -27,17 +27,15 @@ class Repository
     octokit_repository.description
   end
 
-  def create_branch(branch_name, description)
+  def create_branch(branch_name, filename, description)
     root_sha = github_client.ref(full_name, "heads/#{default_branch_name}").object.sha
-    filename = filename_for_new_branch(branch_name)
     new_commit = create_new_file_commit(root_sha, filename, description)
     github_client.create_ref(full_name, "heads/#{branch_name}", new_commit.sha)
   end
 
-  def edit_branch(branch_name, description)
+  def edit_branch(branch_name, filename, description)
     branch = github_client.branch(full_name, branch_name)
     root_sha = branch.commit.sha
-    filename = filename_for_new_branch(branch_name)
 
     new_commit = edit_file_commit(root_sha, filename, description)
     github_client.update_ref(full_name, "heads/#{branch_name}", new_commit.sha)

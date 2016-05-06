@@ -24,7 +24,8 @@ class BranchesController < ApplicationController
       name: params[:repo_name],
       auth_token: current_user.auth_token
     )
-    repository.edit_branch(params[:branch_name], params[:description])
+    filename = repository.filename_for_new_branch(params[:branch_name])
+    repository.edit_branch(params[:branch_name], filename, params[:description])
     redirect_to action: :show
   end
 end
