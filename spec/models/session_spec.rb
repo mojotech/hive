@@ -48,11 +48,7 @@ describe Session do
       it 'creates a new user to the session' do
         expect(session).to receive(:[]=)
 
-        expect {
-          subject.create
-        }.to change {
-          User.count
-        }.by(1)
+        expect { subject.create }.to change { User.count }.by(1)
       end
     end
   end
