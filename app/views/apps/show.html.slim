@@ -1,1 +1,9 @@
+- if @documents
+  .docs
+  - @documents.each do |document|
+    .doc
+      = link_to document.path, app_document_path(@app, document.sha)
+- else
+  .no-docs No Hive documentation
+
 = link_to 'Lanes', app_lanes_path(@app)

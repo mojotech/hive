@@ -17,4 +17,12 @@ class App < ActiveRecord::Base
   def documentation_directory
     'docs'
   end
+
+  def repository(user)
+    Repository.new(
+      name: repository_name,
+      owner_login: repository_owner,
+      auth_token: user.auth_token
+    )
+  end
 end

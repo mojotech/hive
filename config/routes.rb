@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       end
     end
     resources :lanes, only: [:create]
+    resources :documents, only: [:show]
   end
 
   resources :tickets, only: [] do
