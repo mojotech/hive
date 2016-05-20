@@ -53,6 +53,18 @@ class Repository
     compare(default_branch_name, branch_name)
   end
 
+  def get_tree(directory)
+    sha = github_client.ref(full_name, "heads/#{default_branch_name}").object.sha
+    tree = github_client.tree(full_name, sha)
+    # TODO: If we allow nested directories, this needs to be dealt with.
+    subtree = tree.tree.detect { |object| object.path == directory }
+    github_client.tree(full_name, subtree.sha, recursive: true) if subtree
+  end
+
+  def get_content_at_sha(sha)
+    Base64.decode64(github_client.blob(full_name, sha).content)
+  end
+
   private
 
   def compare(first_commit_name, second_commit_name)

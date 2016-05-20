@@ -1,13 +1,20 @@
 class AppsController < ApplicationController
   before_action :ensure_user
-  before_action :add_breadcrumbs, only: [:show, :edit]
+  before_action :add_breadcrumbs, only: [:show, :edit, :lanes]
 
   def index
     @apps = current_user.apps
   end
 
+  def lanes
+    @app = current_app
+  end
+
   def show
     @app = current_app
+    repository = @app.repository(current_user)
+    documentation_tree = repository.get_tree(@app.documentation_directory)
+    @documents = documentation_tree.tree.select { |node| node.type == 'blob' } if documentation_tree
   end
 
   def new
