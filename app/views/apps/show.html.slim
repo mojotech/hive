@@ -7,3 +7,9 @@
   .no-docs No Hive documentation
 
 = link_to 'Lanes', app_lanes_path(@app)
+
+.feature-form
+  h4 New Feature
+  = bootstrap_form_for [@app, Feature.new] do |f|
+    = f.text_field :title
+    = f.submit

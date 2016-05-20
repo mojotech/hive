@@ -2,6 +2,7 @@ class App < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :lanes
   has_many :tickets, through: :lanes
+  has_many :features
 
   validates :repository_name, presence: true
   validates :repository_owner, presence: true
