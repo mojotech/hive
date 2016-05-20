@@ -8,6 +8,12 @@
 
 = link_to 'Lanes', app_lanes_path(@app)
 
+.features
+  h4 Features
+  - @app.features.each do |feature|
+    .feature
+      = link_to feature.title, app_feature_path(@app, feature)
+
 .feature-form
   h4 New Feature
   = bootstrap_form_for [@app, Feature.new] do |f|
